@@ -18,12 +18,8 @@ export default function Home() {
 
   const onChangeSearchText = (e: {target: HTMLInputElement, type: string}): void => setInputText(e.target.value);
 
-  if (process.env.NEXT_PUBLIC_NS_APIKEY == undefined || process.env.NEXT_PUBLIC_NS_INSTANCE_ID == undefined) {
-    console.error('Please set environment variables: NEXT_PUBLIC_NS_APIKEY, NEXT_PUBLIC_NS_INSTANCE_ID')
-    console.log(`NEXT_PUBLIC_NS_APIKEY: ${process.env.NEXT_PUBLIC_NS_APIKEY}`)
-    console.log(`NEXT_PUBLIC_NS_INSTANCE_ID: ${process.env.NEXT_PUBLIC_NS_INSTANCE_ID}`)
-    return <div>error</div>
-  }
+  // process.env は undefined になるが、Inline化されるのでむししなければならない
+  // @ts-ignore
   const nsClient = new NSClient(process.env.NEXT_PUBLIC_NS_APIKEY, process.env.NEXT_PUBLIC_NS_INSTANCE_ID);
 
   const sendRequest = async () => {

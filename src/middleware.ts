@@ -8,11 +8,11 @@ export function middleware(req: NextRequest) {
         const authValue = basicAuth.split(' ')[1]
         const [user, pwd] = Buffer.from(authValue, 'base64').toString().split(':');
 
-        if (process.env.NEXT_BASIC_AUTH_USER == undefined || process.env.NEXT_BASIC_AUTH_PASS == undefined) {
+        if (process.env.NEXT_PUBLIC_BASIC_AUTH_USER == undefined || process.env.NEXT_PUBLIC_BASIC_AUTH_PASS == undefined) {
             // Deny running
             process.exit(1)
         }
-        if (user === process.env.NEXT_BASIC_AUTH_USER && pwd === process.env.NEXT_BASIC_AUTH_PASS) {
+        if (user === process.env.NEXT_PUBLIC_BASIC_AUTH_USER && pwd === process.env.NEXT_PUBLIC_BASIC_AUTH_PASS) {
             return NextResponse.next()
         }
     }
