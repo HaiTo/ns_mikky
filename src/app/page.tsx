@@ -20,6 +20,8 @@ export default function Home() {
 
   if (process.env.NEXT_PUBLIC_NS_APIKEY == undefined || process.env.NEXT_PUBLIC_NS_INSTANCE_ID == undefined) {
     console.error('Please set environment variables: NEXT_PUBLIC_NS_APIKEY, NEXT_PUBLIC_NS_INSTANCE_ID')
+    console.log(`NEXT_PUBLIC_NS_APIKEY: ${process.env.NEXT_PUBLIC_NS_APIKEY}`)
+    console.log(`NEXT_PUBLIC_NS_INSTANCE_ID: ${process.env.NEXT_PUBLIC_NS_INSTANCE_ID}`)
     return <div>error</div>
   }
   const nsClient = new NSClient(process.env.NEXT_PUBLIC_NS_APIKEY, process.env.NEXT_PUBLIC_NS_INSTANCE_ID);
