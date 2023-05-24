@@ -18,7 +18,8 @@ export default function Home() {
 
   const onChangeSearchText = (e: {target: HTMLInputElement, type: string}): void => setInputText(e.target.value);
 
-  // process.env は undefined になるが、Inline化されるのでむししなければならない
+  console.log(`NEXT_PUBLIC_NS_APIKEY: ${process.env.NEXT_PUBLIC_NS_APIKEY}`)
+  console.log(`NEXT_PUBLIC_NS_INSTANCE_ID: ${process.env.NEXT_PUBLIC_NS_INSTANCE_ID}`)
   // @ts-ignore
   const nsClient = new NSClient(process.env.NEXT_PUBLIC_NS_APIKEY, process.env.NEXT_PUBLIC_NS_INSTANCE_ID);
 
