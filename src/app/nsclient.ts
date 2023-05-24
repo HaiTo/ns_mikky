@@ -88,6 +88,7 @@ export class NSClient {
 
     public async seek(req: SeekRequest): Promise<SeekResponse> {
         const response = await this.client.post<SeekResponse>('/seek', req);
-        return response.data as Promise<SeekResponse>;
+        // @ts-ignore
+        return response.data;
     }
 }
